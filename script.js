@@ -65,4 +65,15 @@ Computer's score: ${computerScore}`);
     }
 }
 
-playGame();
+
+
+const btns = document.querySelectorAll('button');
+
+btns.forEach((button) => {
+    button.addEventListener('click', () => {
+            const playerChoice = button.textContent;
+            console.log(playerChoice);
+    });
+})
+
+//add the function for even listener differently not through arrow pleees
