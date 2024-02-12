@@ -42,3 +42,50 @@ button {
     padding: 4px;
     background-color: lightcoral;
 }
+
+#results {
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  gap: 16px;
+  padding: 36px;
+  background-color: "";
+  border-radius: "";
+  border: "";
+  width: 300px;
+  /*
+  background-color: lightgray;
+  border-radius: 24px;
+  border: solid black;
+  */
+}
+.choice {
+  display: flex;
+  gap: 28px;
+  justify-content: space-between;
+}
+.score {
+  display: flex;
+  gap: 110px;
+  justify-content: space-between;
+
+}
+
+#playerScore {
+    color: wheat;
+}
+
+#computerScore {
+    color: wheat;
+}
+
+#result {
+    align-self: center;
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  height: 5px;
+}

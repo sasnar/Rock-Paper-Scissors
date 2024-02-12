@@ -32,30 +32,60 @@ function game() {
         }
     }
 
-    function buttonPlay() {
+    function buttonPlay(callback) {
         btns.forEach((button) => {
         button.addEventListener('click', () => {
                 let playerChoice = button.textContent;
                 let computerChoice = getComputerChoice();
                 let result = gameRound(playerChoice, computerChoice);
+                let displayPlayerChoice = document.querySelector('#playerChoice');
+                let displayComputerChoice = document.querySelector('#computerChoice');
+                let displayPlayerScore = document.querySelector('#playerScore');
+                let displayComputerScore = document.querySelector('#computerScore');
+                let Player = document.querySelector('#Player');
+                let Computer = document.querySelector('#Computer');
+                let displayResults = document.querySelector('#results');
+                let displayResult = document.querySelector('#result');   
+                displayResults.style.backgroundColor = "  lightgray";
+                displayResults.style.borderRadius = "24px";
+                displayResults.style.border = "solid black";
+                displayComputerScore.style.color = "black";
+                displayPlayerScore.style.color = "black";
+                Player.textContent = "Player:";
+                Computer.textContent = "Computer:";     
+                displayResult.textContent = result;
+                displayPlayerChoice.textContent = playerChoice;
+                displayComputerChoice.textContent = computerChoice;     
             if (result.substring(4,7) == "win") {
                 playerScore += 1;
+                displayPlayerScore.textContent = playerScore;
             } else if (result.substring(4,8) == "lose") {
                 computerScore += 1;
+                displayComputerScore.textContent = computerScore;
             }
-            console.log(`Your choice: ${playerChoice}
-    Computer's choice: ${computerChoice}
-    ${result}
-    Your score: ${playerScore}
-    Computer's score: ${computerScore}`);   
         if (playerScore == 3){
-            console.log("You won!");
-            computerScore = 0;
-            playerScore = 0;
+            displayResults.textContent ="You won!";
+            displayResults.style.textAlign = "center";
+            const restartButton = document.createElement('button');
+            restartButton.textContent = 'Restart';
+            displayResults.insertAdjacentElement('beforeend',restartButton);
+            restartButton.addEventListener('click', () => {
+                location.reload();
+            })
+            for (let i = 0; i<btns.length;i++)
+            btns[i].disabled = true;
         } else if (computerScore == 3) {
-            console.log("You lost!");
-            computerScore = 0;
-            playerScore = 0;
+            displayResults.textContent ="You lost!";
+            displayResults.style.textAlign = "center";
+            const restartButton = document.createElement('button');
+            restartButton.textContent = 'Restart';
+            displayResults.insertAdjacentElement('beforeend',restartButton);
+            restartButton.addEventListener('click', () => {
+                location.reload();
+            })
+            for (let i = 0; i<btns.length;i++)
+            btns[i].disabled = true;
+
         }
         });
     })
